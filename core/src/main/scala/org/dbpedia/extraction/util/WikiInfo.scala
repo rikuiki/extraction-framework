@@ -69,7 +69,7 @@ object WikiInfo
       val fields = line.split(",", -1)
       
       // if (fields.length < 15) throw new Exception("expected [15] fields, found ["+fields.length+"] in line ["+line+"]")
-      if (fields.length < 15) { None }
+      if (fields.length < 15) { return None }
       val pages = try fields(4).toInt
       catch { case nfe: NumberFormatException => 0 }
       
