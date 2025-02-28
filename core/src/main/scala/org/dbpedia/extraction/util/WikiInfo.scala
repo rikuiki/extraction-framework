@@ -74,7 +74,8 @@ object WikiInfo
       catch { case nfe: NumberFormatException => 0 }
       
       val wikiCode = fields(2)
-      if (! ConfigUtils.LanguageRegex.pattern.matcher(fields(2)).matches) throw new Exception("expected language code in field with index [2], found line ["+line+"]")
+      // if (! ConfigUtils.LanguageRegex.pattern.matcher(fields(2)).matches) throw new Exception("expected language code in field with index [2], found line ["+line+"]")
+      if (! ConfigUtils.LanguageRegex.pattern.matcher(fields(2)).matches) return None
 
       //if(Language.map.keySet.contains(wikiCode))
         Option(new WikiInfo(wikiCode, pages))
