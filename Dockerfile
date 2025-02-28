@@ -1,4 +1,4 @@
-FROM maven:3-jdk-8
+FROM docker.io/library/maven:3-jdk-8
 
 WORKDIR /dbpedia
 
