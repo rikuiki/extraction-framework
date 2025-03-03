@@ -222,20 +222,21 @@ class ConfigLoader(config: Config)
       private lazy val _mappingPageSource =
       {
         if (!Namespace.mappings.contains(language)) {
-            return List[WikiPage].empty
-        }
-        val namespace = Namespace.mappings(language)
+            List[WikiPage].empty
+        } else {
+            val namespace = Namespace.mappings(language)
 
-        if (config.mappingsDir != null && config.mappingsDir.isDirectory)
-        {
-          val file = new File(config.mappingsDir, namespace.name(Language.Mappings).replace(' ','_')+".xml")
-          XMLSource.fromFile(file, Language.Mappings)
-        }
-        else
-        {
-          val namespaces = Set(namespace)
-          val url = new URL(Language.Mappings.apiUri)
-          WikiSource.fromNamespaces(namespaces,url,Language.Mappings)
+            if (config.mappingsDir != null && config.mappingsDir.isDirectory)
+            {
+                val file = new File(config.mappingsDir, namespace.name(Language.Mappings).replace(' ','_')+".xml")
+                XMLSource.fromFile(file, Language.Mappings)
+            }
+            else
+            {
+                val namespaces = Set(namespace)
+                val url = new URL(Language.Mappings.apiUri)
+                WikiSource.fromNamespaces(namespaces,url,Language.Mappings)
+            }
         }
       }
 
