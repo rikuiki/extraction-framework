@@ -222,7 +222,7 @@ class ConfigLoader(config: Config)
       private lazy val _mappingPageSource =
       {
         if (!Namespace.mappings.contains(language)) {
-            List[WikiPage].empty
+            Traversable.empty[WikiPage]
         } else {
             val namespace = Namespace.mappings(language)
 
