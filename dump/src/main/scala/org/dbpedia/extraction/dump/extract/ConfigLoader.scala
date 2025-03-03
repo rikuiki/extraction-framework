@@ -221,6 +221,9 @@ class ConfigLoader(config: Config)
 
       private lazy val _mappingPageSource =
       {
+        if (!Namespace.mappings.contains(language)) {
+            return List[WikiPage].empty
+        }
         val namespace = Namespace.mappings(language)
 
         if (config.mappingsDir != null && config.mappingsDir.isDirectory)
